@@ -34,4 +34,11 @@ public class PessoaService {
         } catch (Exception ignored){}
         return pessoa;
     }
+
+    public Pessoa atualizar(Pessoa pessoa) {
+        try {
+            pessoa = pessoaRepository.save(pessoa);
+        } catch (Exception ignored){}
+        return pessoa;
+    }
 }

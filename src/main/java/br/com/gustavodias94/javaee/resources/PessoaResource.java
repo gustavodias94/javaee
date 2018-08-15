@@ -1,11 +1,12 @@
 package br.com.gustavodias94.javaee.resources;
 
-import br.com.gustavodias94.javaee.dto.PessoaDTO;
 import br.com.gustavodias94.javaee.dto.converters.PessoaDtoToPessoaConverter;
 import br.com.gustavodias94.javaee.models.Pessoa;
 import br.com.gustavodias94.javaee.services.PessoaService;
+import io.swagger.annotations.Api;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,19 +14,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+@Api
 @Path("/pessoa")
 public class PessoaResource {
 
-    private final PessoaService pessoaService;
-    private final PessoaDtoToPessoaConverter pessoaDtoToPessoaConverter;
+    @Inject
+    PessoaService pessoaService;
 
     @Inject
-    public PessoaResource(PessoaService pessoaService,
-                          PessoaDtoToPessoaConverter pessoaDtoToPessoaConverter) {
-        this.pessoaService = pessoaService;
-        this.pessoaDtoToPessoaConverter = pessoaDtoToPessoaConverter;
-    }
-
+    PessoaDtoToPessoaConverter pessoaDtoToPessoaConverter;
 
     @GET
     @Path("/lista")
@@ -35,10 +32,10 @@ public class PessoaResource {
     }
 
     @POST
-    @Path("/")
+    @Path("/cadastro")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Pessoa cadastrarPessoa(PessoaDTO pessoaDTO){
-        Pessoa pessoa = pessoaDtoToPessoaConverter.apply(pessoaDTO);
+    public Pessoa cadastrarPessoa(Pessoa pessoa){
         return pessoaService.salvar(pessoa);
     }
 

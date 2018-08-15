@@ -12,12 +12,12 @@ import java.util.List;
 @RequestScoped
 public class PessoaRepository {
 
+    @Inject
     private EntityManager em;
 
     public PessoaRepository(){
     }
 
-    @Inject
     public PessoaRepository(EntityManager em) {
         this.em = em;
     }
@@ -32,14 +32,8 @@ public class PessoaRepository {
 
     public Pessoa save(Pessoa pessoa) {
         em.joinTransaction();
-        getOne(pessoa.getId());
-
-        if (pessoa.getId() == null){
-            em.persist(pessoa);
-            return pessoa;
-        } else {
-            return em.merge(pessoa);
-        }
+        em.persist(pessoa);
+        return pessoa;
     }
 
     public void delete(Pessoa pessoa){
