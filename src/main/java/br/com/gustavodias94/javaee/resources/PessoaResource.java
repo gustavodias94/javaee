@@ -3,7 +3,6 @@ package br.com.gustavodias94.javaee.resources;
 import br.com.gustavodias94.javaee.dto.converters.PessoaDtoToPessoaConverter;
 import br.com.gustavodias94.javaee.models.Pessoa;
 import br.com.gustavodias94.javaee.services.PessoaService;
-import io.swagger.annotations.Api;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -14,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Api
 @Path("/pessoa")
 public class PessoaResource {
 
@@ -34,7 +32,6 @@ public class PessoaResource {
     @POST
     @Path("/cadastro")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Pessoa cadastrarPessoa(Pessoa pessoa){
         return pessoaService.salvar(pessoa);
     }
