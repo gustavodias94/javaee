@@ -20,7 +20,7 @@ public class PessoaService {
         this.pessoaRepository = pessoaRepository;
     }
 
-    protected PessoaService() {
+    public PessoaService() {
     }
 
     public List<Pessoa> getPessoas() {

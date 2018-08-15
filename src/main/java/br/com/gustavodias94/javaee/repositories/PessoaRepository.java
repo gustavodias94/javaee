@@ -14,7 +14,7 @@ public class PessoaRepository {
 
     private EntityManager em;
 
-    protected PessoaRepository(){
+    public PessoaRepository(){
     }
 
     @Inject
