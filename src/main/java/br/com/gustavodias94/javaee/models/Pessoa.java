@@ -1,18 +1,27 @@
 package br.com.gustavodias94.javaee.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
+@Table(name = "TB_PESSOA")
+@NamedQuery(name = Pessoa.FIND_ALL, query = "select p from Pessoa p")
 public class Pessoa {
+
+    public static final String FIND_ALL = "findALL";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "NO_PESSOA")
     private String nome;
+    @Column(name = "NR_TELEFONE")
     private Long telefone;
 
 

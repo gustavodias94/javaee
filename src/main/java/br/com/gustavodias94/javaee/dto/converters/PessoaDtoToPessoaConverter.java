@@ -11,9 +11,6 @@ import javax.inject.Named;
 public class PessoaDtoToPessoaConverter implements SuperConverter<PessoaDTO, Pessoa> {
     @Override
     public Pessoa apply(PessoaDTO dto) {
-        final Pessoa pessoa = new Pessoa();
-        pessoa.setNome(dto.getNome());
-        pessoa.setTelefone(dto.getTelefone());
-        return pessoa;
+        return new Pessoa(null, dto.getNome(),dto.getTelefone());
     }
 }

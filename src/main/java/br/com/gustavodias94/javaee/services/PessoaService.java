@@ -13,17 +13,10 @@ import java.util.List;
 @RequestScoped
 public class PessoaService {
 
+    @Inject
     private PessoaRepository pessoaRepository;
 
-    @Inject
-    public PessoaService(PessoaRepository pessoaRepository) {
-        this.pessoaRepository = pessoaRepository;
-    }
-
-    public PessoaService() {
-    }
-
-    public List<Pessoa> getPessoas() {
+    public List getPessoas() {
         return pessoaRepository.findAll();
     }
 

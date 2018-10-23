@@ -3,6 +3,11 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
     <persistence-unit name="javaee" transaction-type="RESOURCE_LOCAL">
+
+        <class>br.com.gustavodias94.javaee.models.Pessoa</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.url"    value="jdbc:h2:mem:javaee" />
